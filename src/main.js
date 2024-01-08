@@ -1,17 +1,18 @@
 import { createApp } from 'vue'
-import { i18n } from '@padcom/vue-i18n'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import App from './App.vue'
 
-const messages = {
-  en: {
-    greeting: 'Some greeting',
-    hello: {
-      message: 'Hello, world!',
-    },
-  },
-}
+import { i18n } from './i18n'
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/', component: () => import('./pages/index.vue'), meta: { title: i18n.t('greeting') } },
+    { path: '/about', component: () => import('./pages/about.vue') },
+  ],
+})
 
 createApp(App)
-  .use(i18n, { messages })
+  .use(router)
   .mount('#app')

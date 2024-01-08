@@ -8,6 +8,6 @@ export default defineConfig({
     i18n(),
   ],
   optimizeDeps: {
-    exclude: ['vue', 'vue-demi']
+    exclude: ['@padcom/vue-i18n']
   },
 })
